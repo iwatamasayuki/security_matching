@@ -14,17 +14,27 @@
 </header>
 
 <body>
-  <div class="guard-entry">
-    警備員登録
-    <%=link_to "登録", new_guard_path %>
-  </div>
+  <% if user_signed_in?%>
+    <div class="guard-entry">
+      警備員登録
+      <%=link_to "登録", new_guard_path %>
+    </div>
 
-  <div class="guard-search">
-    登録警備員検索
+    <div class="guard-search">
+      登録警備員検索
 
-  </div>
+    </div>
+  <% end %>
+
   <div class="gaurd-list">
     登録警備員一覧
-    
+    <% @guards.each do |g| %>
+      <div class="list">
+        <%#= link_to guard_path(@uard.id), method: :get do %>
+          <%#= guard.%>
+          <%= g.guard_name %>
+        <%# end %>
+      </div>
+    <% end %>
   </div>
 </body>
