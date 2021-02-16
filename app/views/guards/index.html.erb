@@ -31,7 +31,7 @@
     <% @guards.each do |g| %>
       <div class="list">
         <%#= link_to guard_path(@uard.id), method: :get do %>
-          <%#= guard.%>
+          <%= image_tag g.image %>
           <%= g.guard_name %>
         <%# end %>
       </div>
