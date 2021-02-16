@@ -18,6 +18,10 @@ class GuardsController < ApplicationController
     end
   end
 
+  def show
+    @guard = Guard.find(params[:id])
+  end
+
   private
 
   def guard_params
