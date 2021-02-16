@@ -1,0 +1,31 @@
+<%= form_with model: @guard, local: true do |f| %>
+  <div class="company">
+    所属会社
+    <%= f.text_field :company%>
+  </div>
+  <div class="guard_name">
+    警備員名
+  <%= f.text_field :guard_name%>
+  </div>
+  <div class="name_kana">
+    フリガナ
+    <%= f.text_field :name_kana%>
+  </div>
+    性別
+    <div class="gender">
+  <%= f.text_field :gender%>
+  </div>
+    年齢
+    <div class="age">
+  <%= f.text_field :age%>
+  </div>
+  <div class="experience">
+    経験年数
+    <%= f.text_field :experience%>
+  </div>
+  <div class="qualification">
+    保有資格
+    <%= f.text_field :qualification%>
+  </div>
+  <%= f.submit "登録" %>
+<% end %>
