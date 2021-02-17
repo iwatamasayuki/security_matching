@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2021_02_16_223840) do
     t.string "gender", null: false
     t.integer "age", null: false
     t.integer "experience", null: false
-    t.integer "qualification", null: false
+    t.string "qualification", null: false
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

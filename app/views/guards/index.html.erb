@@ -1,19 +1,4 @@
-<header>
-  <div class="header-contents">
-    <h1>SECURTY MATCHNG</h1>
-  </div>
-  <div class="right-list">
-    <% if user_signed_in?%>
-      <%= link_to current_user.name, "#" %></li>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'ログイン', new_user_session_path %>
-      <%= link_to '新規登録', new_user_registration_path %>
-    <% end %>
-  </div>
-</header>
-
-<body>
+<%= render "shared/header" %>
   <% if user_signed_in?%>
     <div class="guard-entry">
       警備員登録
@@ -32,8 +17,7 @@
       <div class="list">
         <%= image_tag guard.image.variant(resize: '500x500') %>
         <%= guard.guard_name %>
-        <%= link_to '詳細', guard_path(guard.id), method: :get %>
+        <%= link_to '紹介ページ', guard_path(guard.id), method: :get %>
       </div>
     <% end %>
   </div>
-</body>

@@ -1,0 +1,40 @@
+<%= render "shared/header" %>
+<%= link_to 'トップページに戻る', root_path %>
+
+<h3>警備員紹介</h3>
+
+<% if user_signed_in? && current_user.id == @guard.user_id %>
+  <%= link_to '編集', edit_guard_path(@guard.id), method: :get %>
+  <%= link_to '削除', guard_path(@guard.id), method: :delete %>
+<% end %>
+
+<div class="Introduction-content">
+  <%= image_tag @guard.image.variant(resize: '500x500') %>
+</div>
+
+<h4>プロフィール</h4>
+<div class="Introduction-content">
+  警備員氏名<br />
+  <%= @guard.name_kana %><br />
+  <%= @guard.guard_name %>
+</div>
+
+<div class="Introduction-content">
+  性別<br />
+  <%= @guard.gender %>
+</div>
+
+<div class="Introduction-content">
+  年齢<br />
+  <%= @guard.age %>歳
+</div>
+
+<div class="Introduction-content">
+  経験年数<br />
+  <%= @guard.experience %>年
+</div>
+
+<div class="Introduction-content">
+  保有資格<br />
+  <%= @guard.qualification %>
+</div>
