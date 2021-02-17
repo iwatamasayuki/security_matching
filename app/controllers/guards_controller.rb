@@ -25,6 +25,6 @@ class GuardsController < ApplicationController
   private
 
   def guard_params
-    params.require(:guard).permit(:company, :guard_name, :name_kana, :gender, :age, :experience, :qualification).merge(user_id: current_user.id)
+    params.require(:guard).permit(:company, :image, :guard_name, :name_kana, :gender, :age, :experience, :qualification).merge(user_id: current_user.id)
   end
 end

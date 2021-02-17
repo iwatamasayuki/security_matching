@@ -4,6 +4,10 @@
     <%= f.text_field :company%>
   </div>
   <div class="field">
+    <%= f.label :image, "本人写真" %><br />
+    <%= f.file_field :image%>
+  </div>
+  <div class="field">
     <%= f.label :company, "警備員名" %><br />
   <%= f.text_field :guard_name%>
   </div>

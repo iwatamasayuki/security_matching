@@ -7,7 +7,7 @@ class CreateGuards < ActiveRecord::Migration[6.0]
       t.string  :gender,        null: false
       t.integer :age,           null: false
       t.integer :experience,    null: false
-      t.integer :qualification, null: false
+      t.string  :qualification, null: false
       t.references :user,            foreign_key: true
       t.timestamps
     end
