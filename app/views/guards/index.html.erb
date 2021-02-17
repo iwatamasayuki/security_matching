@@ -28,12 +28,11 @@
 
   <div class="gaurd-list">
     登録警備員一覧
-    <% @guards.each do |g| %>
+    <% @guards.each do |guard| %>
       <div class="list">
-        <%#= link_to guard_path(@uard.id), method: :get do %>
-          <%= image_tag g.image %>
-          <%= g.guard_name %>
-        <%# end %>
+        <%= image_tag guard.image.variant(resize: '500x500') %>
+        <%= guard.guard_name %>
+        <%= link_to '詳細', guard_path(guard.id), method: :get %>
       </div>
     <% end %>
   </div>

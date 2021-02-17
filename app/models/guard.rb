@@ -1,6 +1,7 @@
 class Guard < ApplicationRecord
   with_options presence: true do
     validates :company
+    validates :image
     validates :guard_name
     validates :name_kana
     validates :gender
