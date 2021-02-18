@@ -1,0 +1,21 @@
+<h1>
+  検索結果
+</h1>
+<% if @results.length !=0 %>
+  <% @results.each do |result| %>
+    <td>
+    <br>
+    <li>
+      <%= result.guard_name %>
+      <%= result.gender %>
+      <%= result.age %>
+      <%= result.experience %>
+      <%= result.qualification %>
+      <%= link_to '紹介ページ', result %>
+    </li>
+  <% end %>
+<% else %>
+  該当する警備員は登録がありません
+<% end %>
+<br>
+<%= link_to 'トップページへ戻る', root_path %>

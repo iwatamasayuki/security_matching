@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_223840) do
+ActiveRecord::Schema.define(version: 2021_02_17_025414) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,16 @@ ActiveRecord::Schema.define(version: 2021_02_16_223840) do
     t.index ["user_id"], name: "index_guards_on_user_id"
   end
 
+  create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "text"
+    t.bigint "user_id"
+    t.bigint "guard_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["guard_id"], name: "index_messages_on_guard_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", default: "", null: false
@@ -62,4 +72,6 @@ ActiveRecord::Schema.define(version: 2021_02_16_223840) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "guards", "users"
+  add_foreign_key "messages", "guards"
+  add_foreign_key "messages", "users"
 end
