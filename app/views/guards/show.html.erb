@@ -14,6 +14,11 @@
 
 <h4>プロフィール</h4>
 <div class="Introduction-content">
+  所属・会社<br />
+  <%= @guard.company %>
+</div>
+
+<div class="Introduction-content">
   警備員氏名<br />
   <%= @guard.name_kana %><br />
   <%= @guard.guard_name %>
@@ -39,16 +44,24 @@
   <%= @guard.qualification %>
 </div>
 
-<% if user_signed_in? %>
-  <h3>チャット</h3>
-  <%= form_with(model: [@guard, @message], local: true) do |f| %>
-    <%= f.text_field :text %>
-    <%= f.submit '送信' %>
-  <% end %>
-
-  <div id='messages'>
-    <% @messages.reverse_each do |message| %>
-      <p><%= message.text %></p>
+<div class="container">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@guard, @message], local: true) do |form| %>
+        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+        <%= form.submit "送信" %>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
     <% end %>
-  </div> 
-<% end %>
+    <div class="messages">
+      <h4>＜コメント一覧＞</h4>
+      <% if @messages %>
+        <% @messages.each do |message| %>
+          <p>
+            <strong><%= link_to message.user.name, "/users/#{message.user_id}" %>：</strong>
+            <%= message.text %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+</div>

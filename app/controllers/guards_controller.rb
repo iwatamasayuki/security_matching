@@ -24,7 +24,7 @@ class GuardsController < ApplicationController
 
   def show
     @message = Message.new
-    @messages = Message.all
+    @messages = @guard.messages.includes(:user)
   end
 
   def edit

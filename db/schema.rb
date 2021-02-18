@@ -48,13 +48,11 @@ ActiveRecord::Schema.define(version: 2021_02_17_025414) do
   end
 
   create_table "messages", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "guard_id"
     t.text "text"
-    t.bigint "user_id"
-    t.bigint "guard_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["guard_id"], name: "index_messages_on_guard_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -72,6 +70,4 @@ ActiveRecord::Schema.define(version: 2021_02_17_025414) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "guards", "users"
-  add_foreign_key "messages", "guards"
-  add_foreign_key "messages", "users"
 end
