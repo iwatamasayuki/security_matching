@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'messages/new'
   devise_for :users
   root to: 'guards#index'
-  resources :guards
+  get 'guards/search'
+  resources :guards do
+    resources :messages, only: [:create]
+  end
 end

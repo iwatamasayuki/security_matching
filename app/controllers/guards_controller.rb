@@ -1,9 +1,11 @@
 class GuardsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_guard, only: [:edit, :show, :update, :destroy]
+  before_action :search_product, only: [:index, :search]
 
   def index
     @guards = Guard.all.order('created_at DESC')
+    set_guard_column
   end
 
   def new
@@ -21,6 +23,8 @@ class GuardsController < ApplicationController
   end
 
   def show
+    @message = Message.new
+    @messages = @guard.messages.includes(:user)
   end
 
   def edit
@@ -39,6 +43,10 @@ class GuardsController < ApplicationController
     redirect_to root_path
   end
 
+  def search
+    @results = @g.result
+  end
+
   private
 
   def guard_params
@@ -48,4 +56,15 @@ class GuardsController < ApplicationController
   def set_guard
     @guard = Guard.find(params[:id])
   end
+
+  def search_product
+    @g = Guard.ransack(params[:q])
+  end
+
+  def set_guard_column
+    @guard_name = Guard.select("guard_name").distinct
+    @gender = Guard.select("gender").distinct
+    @qualification = Guard.select("qualification").distinct
+  end
+
 end
