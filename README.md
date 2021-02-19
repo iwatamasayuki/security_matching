@@ -91,7 +91,7 @@ Password: brows2
 git clone https://github.com/iwatamasayuki/security_matching.git
 ```
 
-2. ターミナルで上記を保存したディレクトリにて、以下を実行
+2. ターミナルでsecurity-matchingのディレクトリにて、以下を実行
 
 ```vb
 rails s
