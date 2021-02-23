@@ -8,27 +8,27 @@
     <%= f.file_field :image%>
   </div>
   <div class="field">
-    <%= f.label :company, "警備員名" %><br />
+    <%= f.label :guard_name, "警備員名" %><br />
   <%= f.text_field :guard_name%>
   </div>
   <div class="field">
-    <%= f.label :company, "フリガナ" %><br />
+    <%= f.label :name_kana, "フリガナ" %><br />
     <%= f.text_field :name_kana%>
   </div>
-    <%= f.label :company, "性別" %><br />
-    <div class="field">
-  <%= f.text_field :gender%>
-  </div>
-    <%= f.label :company, "年齢" %><br />
-    <div class="field">
-  <%= f.text_field :age%>
+  <div class="field">
+    <%= f.label :gender, "性別" %><br />
+    <%= f.text_field :gender%>
   </div>
   <div class="field">
-    <%= f.label :company, "経験年数" %><br />
+    <%= f.label :age, "年齢" %><br />
+    <%= f.text_field :age%>
+  </div>
+  <div class="field">
+    <%= f.label :experience, "経験年数" %><br />
     <%= f.text_field :experience%>
   </div>
   <div class="field">
-    <%= f.label :company, "保有資格" %><br />
+    <%= f.label :qualification, "保有資格" %><br />
     <%= f.text_field :qualification%>
   </div>
   <%= f.submit "登録" %>
