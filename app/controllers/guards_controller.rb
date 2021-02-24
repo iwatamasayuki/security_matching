@@ -4,7 +4,7 @@ class GuardsController < ApplicationController
   before_action :search_product, only: [:index, :search]
 
   def index
-    @guards = Guard.all.order('created_at DESC')
+    @guards = Guard.includes(:user).order('created_at DESC')
     set_guard_column
   end
 

@@ -1,67 +1,70 @@
 <%= render "shared/header" %>
 <%= link_to 'トップページに戻る', root_path %>
 
-<h3>警備員紹介</h3>
+<div class="guard-introduction">
+  <h3 class="introduction-title">警備員紹介</h3>
 
-<% if user_signed_in? && current_user.id == @guard.user_id %>
-  <%= link_to '編集', edit_guard_path(@guard.id), method: :get %>
-  <%= link_to '削除', guard_path(@guard.id), method: :delete %>
-<% end %>
+  <% if user_signed_in? && current_user.id == @guard.user_id %>
+    <%= link_to '編集', edit_guard_path(@guard.id), method: :get %>
+    <%= link_to '削除', guard_path(@guard.id), method: :delete %>
+  <% end %>
 
-<div class="Introduction-content">
-  <%= image_tag @guard.image.variant(resize: '500x500') %>
-</div>
+  <div class="Introduction-content">
+    <%= image_tag @guard.image.variant(resize: '500x500') %>
+  </div>
 
-<h4>プロフィール</h4>
-<div class="Introduction-content">
-  所属・会社<br />
-  <%= @guard.company %>
-</div>
+  <h4>プロフィール</h4>
+  <div class="Introduction-content">
+    所属・会社<br />
+    <%= @guard.company %>
+  </div>
 
-<div class="Introduction-content">
-  警備員氏名<br />
-  <%= @guard.name_kana %><br />
-  <%= @guard.guard_name %>
-</div>
+  <div class="Introduction-content">
+    警備員氏名<br />
+    <%= @guard.name_kana %><br />
+    <%= @guard.guard_name %>
+  </div>
 
-<div class="Introduction-content">
-  性別<br />
-  <%= @guard.gender %>
-</div>
+  <div class="Introduction-content">
+    性別<br />
+    <%= @guard.gender %>
+  </div>
 
-<div class="Introduction-content">
-  年齢<br />
-  <%= @guard.age %>歳
-</div>
+  <div class="Introduction-content">
+    年齢<br />
+    <%= @guard.age %>歳
+  </div>
 
-<div class="Introduction-content">
-  経験年数<br />
-  <%= @guard.experience %>年
-</div>
+  <div class="Introduction-content">
+    経験年数<br />
+    <%= @guard.experience %>年
+  </div>
 
-<div class="Introduction-content">
-  保有資格<br />
-  <%= @guard.qualification %>
-</div>
+  <div class="Introduction-content">
+    保有資格<br />
+    <%= @guard.qualification %>
+  </div>
 
-<div class="container">
-    <% if user_signed_in? %>
-      <%= form_with(model: [@guard, @message], local: true) do |form| %>
-        <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
-        <%= form.submit "送信" %>
-      <% end %>
-    <% else %>
-      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
-    <% end %>
-    <div class="messages">
-      <h4>＜コメント一覧＞</h4>
-      <% if @messages %>
-        <% @messages.each do |message| %>
-          <p>
-            <strong><%= link_to message.user.name, "/users/#{message.user_id}" %>：</strong>
-            <%= message.text %>
-          </p>
+  <div class="container">
+    <%= @guard.guard_name %>さんとのコメント
+      <% if user_signed_in? %>
+        <%= form_with(model: [@guard, @message], local: true) do |form| %>
+          <%= form.text_area :text, placeholder: "コメントする", rows: "2" %>
+          <%= form.submit "送信" %>
         <% end %>
+      <% else %>
+        <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
-    </div>
+      <div class="messages">
+        <h4>＜コメント一覧＞</h4>
+        <% if @messages %>
+          <% @messages.each do |message| %>
+            <p>
+              <strong><%= link_to message.user.name, "/users/#{message.user_id}" %>：</strong>
+              <%= message.text %>
+            </p>
+          <% end %>
+        <% end %>
+      </div>
+  </div>
 </div>
