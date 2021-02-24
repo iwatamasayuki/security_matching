@@ -16,6 +16,12 @@ SECURTY MATCHNG
 
 https://security-matching.herokuapp.com/
 
+## ユーザー認証
+
+ID：alex
+
+PASS：1111
+
 ## テスト用アカウント
 
 Name: 登録用アカウント
