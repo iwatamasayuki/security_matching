@@ -1,11 +1,11 @@
 <%= render "shared/header" %>
+<div class="text-center">
   <% if user_signed_in?%>
-    <div class="guard-entry">
+    <div class="bg-info p-2">
       警備員登録
-      <%=link_to "登録", new_guard_path, class: 'btn btn-default' %>
+      <%= button_to '登録', new_guard_path %>
     </div>
-
-    <div class="guard-search">
+    <div class="bg-success text-white p-2">
       登録警備員検索
       <br>
       <%= search_form_for @g, url: guards_search_path do |f| %>
@@ -46,13 +46,15 @@
     </div>
   <% end %>
 
-  <div class="gaurd-list">
+  <div class="bg-primary text-white pb-4">
     登録警備員一覧
     <% @guards.each do |guard| %>
       <div class="list">
         <%= image_tag guard.image.variant(resize: '500x500') %>
+        <br>
         <%= guard.guard_name %>
-        <%= link_to '紹介ページ', guard_path(guard.id), method: :get, class: 'btn btn-default' %>
+        <%= button_to '紹介ページ', guard, method: :get %>
       </div>
     <% end %>
   </div>
+</div>

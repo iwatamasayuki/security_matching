@@ -1,12 +1,16 @@
 <%= render "shared/header" %>
-<%= link_to 'トップページに戻る', root_path %>
 
-<div class="guard-introduction">
-  <h3 class="introduction-title">警備員紹介</h3>
+<div class="text-right p-2">
+  <%= link_to 'トップページに戻る', root_path %>
+</div>
 
+<div class="bg-success text-center">
+  <h3>警備員紹介</h3>
   <% if user_signed_in? && current_user.id == @guard.user_id %>
-    <%= link_to '編集', edit_guard_path(@guard.id), method: :get %>
-    <%= link_to '削除', guard_path(@guard.id), method: :delete %>
+    <div class="border-bottom p-2">
+    <%= button_to '編集', edit_guard_path(@guard.id), method: :get %>
+    <%= button_to '削除', guard_path(@guard.id), method: :delete %>
+    </div>
   <% end %>
 
   <div class="Introduction-content">
@@ -14,38 +18,40 @@
   </div>
 
   <h4>プロフィール</h4>
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     所属・会社<br />
     <%= @guard.company %>
   </div>
 
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     警備員氏名<br />
     <%= @guard.name_kana %><br />
     <%= @guard.guard_name %>
   </div>
 
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     性別<br />
     <%= @guard.gender %>
   </div>
 
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     年齢<br />
     <%= @guard.age %>歳
   </div>
 
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     経験年数<br />
     <%= @guard.experience %>年
   </div>
 
-  <div class="Introduction-content">
+  <div class="border-bottom p-2">
     保有資格<br />
     <%= @guard.qualification %>
   </div>
+</div>
 
-  <div class="container">
+<div class="bg-primary text-center">
+  <div class="p-2">
     <%= @guard.guard_name %>さんとのコメント
       <% if user_signed_in? %>
         <%= form_with(model: [@guard, @message], local: true) do |form| %>
