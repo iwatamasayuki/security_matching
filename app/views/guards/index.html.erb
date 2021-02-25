@@ -2,7 +2,7 @@
   <% if user_signed_in?%>
     <div class="guard-entry">
       警備員登録
-      <%=link_to "登録", new_guard_path %>
+      <%=link_to "登録", new_guard_path, class: 'btn btn-default' %>
     </div>
 
     <div class="guard-search">
@@ -52,7 +52,7 @@
       <div class="list">
         <%= image_tag guard.image.variant(resize: '500x500') %>
         <%= guard.guard_name %>
-        <%= link_to '紹介ページ', guard_path(guard.id), method: :get %>
+        <%= link_to '紹介ページ', guard_path(guard.id), method: :get, class: 'btn btn-default' %>
       </div>
     <% end %>
   </div>
