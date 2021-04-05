@@ -5,7 +5,14 @@
   <% if user_signed_in?%>
     <%= current_user.name %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <% elsif company_signed_in?%>
+    <%= current_user.name %>
+    <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
   <% else %>
+    <h2>企業ユーザー</h2>
+    <%= link_to 'ログイン', new_company_session_path %>
+    <%= link_to '新規登録', new_company_registration_path %>
+    <h2>警備員ユーザー</h2>
     <%= link_to 'ログイン', new_user_session_path %>
     <%= link_to '新規登録', new_user_registration_path %>
   <% end %>
