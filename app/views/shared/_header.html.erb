@@ -13,24 +13,16 @@
       <%= link_to 'ログアウト', destroy_company_session_path, method: :delete %>
     </span>
   <% else %>
-    <div class="d-flex  justify-content-around">
-      <span class="border border-primary rounded">
+    <div class="d-flex justify-content-around">
+      <span class="border border-success rounded">
       <h2>企業ユーザー</h2>
-        <span class="border border-success rounded">
-          <%= link_to 'ログイン', new_company_session_path %>
-        </span>
-        <span class="border border-success rounded">
-          <%= link_to '新規登録', new_company_registration_path %>
-        </span>
+        <%= link_to 'ログイン', new_company_session_path %>
+        <%= link_to '新規登録', new_company_registration_path %>
       </span>
       <span class="border border-primary rounded">
       <h2>警備員ユーザー</h2>
-        <span class="border border-success rounded">
-          <%= link_to 'ログイン', new_user_session_path %>
-        </span>
-        <span class="border border-success rounded">
+        <%= link_to 'ログイン', new_user_session_path %>
         <%= link_to '新規登録', new_user_registration_path %>
-        </span>
       </span>
     </div>
   <% end %>
